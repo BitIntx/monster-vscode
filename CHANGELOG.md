@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.5
+
+- refreshed Marketplace metadata after the GitHub username change
+- removed stale `jwheo12` links from the published README and repository metadata
+
 ## 0.1.4
 
 - moved the extension to the `monster-lang` publisher
