@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Validate extension metadata
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          paths = [
+              Path("package.json"),
+              Path("language-configuration.json"),
+              Path("syntaxes/monster.tmLanguage.json"),
+              Path("snippets/monster.json"),
+          ]
+
+          for path in paths:
+              with path.open() as f:
+                  json.load(f)
+              print(f"validated: {path}")
+
+          required = [
+              Path("icons/monster-light.svg"),
+              Path("icons/monster-dark.svg"),
+              Path("README.md"),
+              Path("LICENSE"),
+          ]
+
+          for path in required:
+              if not path.exists():
+                  raise SystemExit(f"missing required file: {path}")
+              print(f"found: {path}")
+          PY

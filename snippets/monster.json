@@ -1,0 +1,40 @@
+{
+  "main": {
+    "prefix": "main",
+    "body": [
+      "fn main() -> i32 {",
+      "    $0",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Monster main function"
+  },
+  "hello": {
+    "prefix": "hello",
+    "body": [
+      "fn main() -> i32 {",
+      "    print_str(\"Hello, World!\");",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Monster Hello, World!"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if $1 {",
+      "    $0",
+      "}"
+    ],
+    "description": "Monster if statement"
+  },
+  "while": {
+    "prefix": "while",
+    "body": [
+      "while $1 {",
+      "    $0",
+      "}"
+    ],
+    "description": "Monster while loop"
+  }
+}

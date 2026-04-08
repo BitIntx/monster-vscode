@@ -1,0 +1,73 @@
+{
+  "name": "monster-language",
+  "displayName": "Monster Language",
+  "description": "Syntax highlighting, snippets, and file icon support for Monster (.mnst).",
+  "version": "0.1.4",
+  "publisher": "monster-lang",
+  "license": "MIT",
+  "icon": "icons/monster-marketplace.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BitIntx/monster-vscode"
+  },
+  "homepage": "https://github.com/BitIntx/monster-vscode",
+  "bugs": {
+    "url": "https://github.com/BitIntx/monster-vscode/issues"
+  },
+  "galleryBanner": {
+    "color": "#ff8a1f",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "monster",
+    "mnst",
+    "language",
+    "vscode",
+    "compiler",
+    "syntax"
+  ],
+  "scripts": {
+    "package": "npx @vscode/vsce package",
+    "package:pre": "npx @vscode/vsce package --pre-release",
+    "publish": "npx @vscode/vsce publish",
+    "publish:pre": "npx @vscode/vsce publish --pre-release"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "monster",
+        "aliases": [
+          "Monster",
+          "monster"
+        ],
+        "extensions": [
+          ".mnst"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icons/monster-light.svg",
+          "dark": "./icons/monster-dark.svg"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "monster",
+        "scopeName": "source.monster",
+        "path": "./syntaxes/monster.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "monster",
+        "path": "./snippets/monster.json"
+      }
+    ]
+  }
+}
