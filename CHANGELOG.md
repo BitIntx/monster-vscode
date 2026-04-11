@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.9
+
+- added syntax highlighting and hover help for Monster `const` declarations
+- added a `const` snippet for top-level constants
+
 ## 0.1.8
 
 - added hover help for Monster keywords, primitive types, literals, and builtins

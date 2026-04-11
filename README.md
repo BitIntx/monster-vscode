@@ -27,10 +27,10 @@ code --install-extension monster-lang.monster-language
 ## What You Get
 
 - `.mnst` file association
-- syntax highlighting for current Monster syntax, including `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
+- syntax highlighting for current Monster syntax, including `const`, `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
 - hover help for Monster keywords, primitive types, and builtins
 - line comments and bracket rules
-- starter snippets for `main`, `hello`, `if`, and `while`
+- starter snippets for `main`, `hello`, `const`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
 
 ## Quick Start

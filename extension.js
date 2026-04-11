@@ -44,6 +44,12 @@ const HOVER_ENTRIES = new Map(
       signature: "let name: Type = value;\nlet mut name: Type = value;",
       description: "Declares a local variable. Use `mut` when the variable should be assignable.",
     },
+    const: {
+      kind: "keyword",
+      signature: "const NAME: Type = expr;",
+      description:
+        "Declares a top-level compile-time constant. Current initializers support scalar expressions such as literals, arithmetic, casts, booleans, strings, and sizeof(T).",
+    },
     mut: {
       kind: "keyword",
       signature: "let mut name: Type = value;",

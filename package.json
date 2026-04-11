@@ -2,7 +2,7 @@
   "name": "monster-language",
   "displayName": "Monster Language",
   "description": "Syntax highlighting, snippets, hover help, and file icon support for Monster (.mnst).",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "publisher": "monster-lang",
   "license": "MIT",
   "icon": "icons/monster-marketplace.png",
