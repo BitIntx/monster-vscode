@@ -28,6 +28,7 @@ code --install-extension monster-lang.monster-language
 
 - `.mnst` file association
 - syntax highlighting for current Monster syntax, including `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
+- hover help for Monster keywords, primitive types, and builtins
 - line comments and bracket rules
 - starter snippets for `main`, `hello`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
@@ -48,6 +49,7 @@ Open a `.mnst` file and VS Code will automatically switch to Monster language mo
 Today this extension focuses on the basics:
 
 - syntax coloring
+- hover help
 - snippets
 - file association
 - icon support
@@ -57,7 +59,7 @@ Not included yet:
 - language server features
 - diagnostics from the compiler
 - formatting
-- hover, go-to-definition, or semantic tokens
+- go-to-definition or semantic tokens
 
 ## Local Development
 

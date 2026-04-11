@@ -1,8 +1,8 @@
 {
   "name": "monster-language",
   "displayName": "Monster Language",
-  "description": "Syntax highlighting, snippets, and file icon support for Monster (.mnst).",
-  "version": "0.1.7",
+  "description": "Syntax highlighting, snippets, hover help, and file icon support for Monster (.mnst).",
+  "version": "0.1.8",
   "publisher": "monster-lang",
   "license": "MIT",
   "icon": "icons/monster-marketplace.png",
@@ -21,6 +21,10 @@
   "engines": {
     "vscode": "^1.80.0"
   },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:monster"
+  ],
   "categories": [
     "Programming Languages"
   ],

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.8
+
+- added hover help for Monster keywords, primitive types, literals, and builtins
+- documented the new hover support in the extension README
+
 ## 0.1.7
 
 - refreshed syntax highlighting for `enum`, payload enum patterns, `match`, and `sizeof`
