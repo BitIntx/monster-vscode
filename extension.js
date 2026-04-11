@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 
 const DOCS_URL = "https://bitintx.github.io/monster-lang/";
+const CLI_DOCS_URL = `${DOCS_URL}cli.html`;
 
 const HOVER_ENTRIES = new Map(
   Object.entries({
@@ -224,34 +225,120 @@ const HOVER_ENTRIES = new Map(
   })
 );
 
-function activate(context) {
-  const provider = vscode.languages.registerHoverProvider("monster", {
+const MANIFEST_HOVER_ENTRIES = new Map(
+  Object.entries({
+    package: {
+      kind: "section",
+      signature: "[package]",
+      description: "Project identity and entry-point settings for a Monster package.",
+    },
+    build: {
+      kind: "section",
+      signature: "[build]",
+      description: "Default compiler options used by `mst build` and `mst run`.",
+    },
+    name: {
+      kind: "manifest key",
+      signature: 'name = "hello-monster"',
+      description: "The package name created by `mst init` and shown in project metadata.",
+    },
+    entry: {
+      kind: "manifest key",
+      signature: 'entry = "src/main.mnst"',
+      description:
+        "The default source file. Commands such as `mst check`, `mst build`, and `mst run` can use this when no input path is passed.",
+    },
+    profile: {
+      kind: "manifest key",
+      signature: 'profile = "release"',
+      description: "Build profile. Use `release` for optimized builds or `debug` for easier debugging.",
+    },
+    mode: {
+      kind: "manifest key",
+      signature: 'mode = "debug"',
+      description: "Alias for `profile`, kept for short manifest experiments.",
+    },
+    "opt-level": {
+      kind: "manifest key",
+      signature: "opt-level = 2",
+      description: "LLVM optimization level. Valid values are `0`, `1`, `2`, and `3`.",
+    },
+    opt_level: {
+      kind: "manifest key",
+      signature: "opt_level = 2",
+      description: "Underscore spelling for `opt-level`.",
+    },
+    cpu: {
+      kind: "manifest key",
+      signature: 'cpu = "generic"',
+      description: "Target CPU tuning. Use `generic` for portable builds or `native` for the current machine.",
+    },
+    release: {
+      kind: "manifest value",
+      signature: 'profile = "release"',
+      description: "Optimized build profile.",
+    },
+    debug: {
+      kind: "manifest value",
+      signature: 'profile = "debug"',
+      description: "Debug-friendly build profile.",
+    },
+    generic: {
+      kind: "manifest value",
+      signature: 'cpu = "generic"',
+      description: "Portable CPU target.",
+    },
+    native: {
+      kind: "manifest value",
+      signature: 'cpu = "native"',
+      description: "Tune output for the current CPU.",
+    },
+  })
+);
+
+function buildHover(word, wordRange, entry, codeLanguage, docsUrl) {
+  const markdown = new vscode.MarkdownString();
+  markdown.supportHtml = false;
+  markdown.appendMarkdown(`**${word}** _${entry.kind}_\n\n`);
+  markdown.appendCodeblock(entry.signature, codeLanguage);
+  markdown.appendMarkdown(`\n${entry.description}\n\n`);
+  markdown.appendMarkdown(`[Monster docs](${docsUrl})`);
+
+  return new vscode.Hover(markdown, wordRange);
+}
+
+function createHoverProvider(entries, wordRegex, codeLanguage, docsUrl) {
+  return {
     provideHover(document, position) {
-      const wordRange = document.getWordRangeAtPosition(position, /[A-Za-z_][A-Za-z0-9_]*/);
+      const wordRange = document.getWordRangeAtPosition(position, wordRegex);
 
       if (!wordRange) {
         return undefined;
       }
 
       const word = document.getText(wordRange);
-      const entry = HOVER_ENTRIES.get(word);
+      const entry = entries.get(word);
 
       if (!entry) {
         return undefined;
       }
 
-      const markdown = new vscode.MarkdownString();
-      markdown.supportHtml = false;
-      markdown.appendMarkdown(`**${word}** _${entry.kind}_\n\n`);
-      markdown.appendCodeblock(entry.signature, "mnst");
-      markdown.appendMarkdown(`\n${entry.description}\n\n`);
-      markdown.appendMarkdown(`[Monster docs](${DOCS_URL})`);
-
-      return new vscode.Hover(markdown, wordRange);
+      return buildHover(word, wordRange, entry, codeLanguage, docsUrl);
     },
-  });
+  };
+}
 
-  context.subscriptions.push(provider);
+function activate(context) {
+  const monsterProvider = vscode.languages.registerHoverProvider(
+    "monster",
+    createHoverProvider(HOVER_ENTRIES, /[A-Za-z_][A-Za-z0-9_]*/, "mnst", DOCS_URL)
+  );
+  const manifestProvider = vscode.languages.registerHoverProvider(
+    "monster-manifest",
+    createHoverProvider(MANIFEST_HOVER_ENTRIES, /[A-Za-z_][A-Za-z0-9_-]*/, "toml", CLI_DOCS_URL)
+  );
+
+  context.subscriptions.push(monsterProvider, manifestProvider);
 }
 
 function deactivate() {}

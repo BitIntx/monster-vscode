@@ -1,0 +1,26 @@
+{
+  "Monster manifest": {
+    "prefix": "manifest",
+    "body": [
+      "[package]",
+      "name = \"${1:hello-monster}\"",
+      "entry = \"${2:src/main.mnst}\"",
+      "",
+      "[build]",
+      "profile = \"${3|release,debug|}\"",
+      "opt-level = ${4|0,1,2,3|}",
+      "cpu = \"${5|generic,native|}\""
+    ],
+    "description": "Monster.toml project manifest"
+  },
+  "Build profile": {
+    "prefix": "build",
+    "body": [
+      "[build]",
+      "profile = \"${1|release,debug|}\"",
+      "opt-level = ${2|0,1,2,3|}",
+      "cpu = \"${3|generic,native|}\""
+    ],
+    "description": "Monster.toml build settings"
+  }
+}

@@ -9,15 +9,46 @@
     ],
     "description": "Monster main function"
   },
+  "main with argv": {
+    "prefix": "mainargs",
+    "body": [
+      "fn main(argc: i32, argv: **u8) -> i32 {",
+      "    $0",
+      "    return 0;",
+      "}"
+    ],
+    "description": "Monster main function with argc/argv"
+  },
   "hello": {
     "prefix": "hello",
     "body": [
       "fn main() -> i32 {",
-      "    print_str(\"Hello, World!\");",
+      "    print_ln_str(\"Hello, World!\");",
       "    return 0;",
       "}"
     ],
     "description": "Monster Hello, World!"
+  },
+  "import": {
+    "prefix": "import",
+    "body": [
+      "import \"${1:path/to/file.mnst}\";"
+    ],
+    "description": "Monster source import"
+  },
+  "import alias": {
+    "prefix": "importas",
+    "body": [
+      "import \"${1:path/to/file.mnst}\" as ${2:module};"
+    ],
+    "description": "Monster source import with module alias"
+  },
+  "extern function": {
+    "prefix": "extern",
+    "body": [
+      "extern fn ${1:name}(${2:param}: ${3:i32}) -> ${4:i32};"
+    ],
+    "description": "Monster extern function declaration"
   },
   "const": {
     "prefix": "const",
@@ -25,6 +56,25 @@
       "const ${1:NAME}: ${2:i32} = ${3:0};"
     ],
     "description": "Monster top-level constant"
+  },
+  "struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} {",
+      "    ${2:field}: ${3:i32},",
+      "}"
+    ],
+    "description": "Monster struct declaration"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:Name} {",
+      "    ${2:Variant},",
+      "    ${3:Payload}(${4:i32}),",
+      "}"
+    ],
+    "description": "Monster enum declaration"
   },
   "if": {
     "prefix": "if",
@@ -34,6 +84,16 @@
       "}"
     ],
     "description": "Monster if statement"
+  },
+  "match": {
+    "prefix": "match",
+    "body": [
+      "match ${1:value} {",
+      "    ${2:Variant} => ${3:0},",
+      "    ${4:Other} => ${5:1},",
+      "}"
+    ],
+    "description": "Monster match expression"
   },
   "while": {
     "prefix": "while",

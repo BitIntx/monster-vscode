@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+- published as a stable release
+- added `Monster.toml` file association, syntax highlighting, snippets, and hover help
+- refreshed Monster source highlighting for struct and const declarations plus qualified calls
+- expanded snippets for imports, extern functions, structs, enums, match, and argc/argv main functions
+
 ## 0.1.9
 
 - added syntax highlighting and hover help for Monster `const` declarations

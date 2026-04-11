@@ -5,7 +5,7 @@
 [![Compiler Repo](https://img.shields.io/badge/compiler-monster--lang-22160b?color=22160b)](https://github.com/BitIntx/monster-lang)
 [![License: MIT](https://img.shields.io/badge/license-MIT-ff8a1f)](./LICENSE)
 
-Basic VS Code support for the Monster programming language and `.mnst` source files.
+Basic VS Code support for the Monster programming language, `.mnst` source files, and `Monster.toml` project manifests.
 
 This extension is developed alongside the main Monster compiler project:
 
@@ -26,14 +26,23 @@ code --install-extension monster-lang.monster-language
 
 ## What You Get
 
-- `.mnst` file association
-- syntax highlighting for current Monster syntax, including `const`, `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
-- hover help for Monster keywords, primitive types, and builtins
+- `.mnst` and `Monster.toml` file associations
+- syntax highlighting for current Monster syntax, including `const`, `struct`, `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
+- syntax highlighting for `Monster.toml` project manifest sections and build options
+- hover help for Monster keywords, primitive types, builtins, and manifest keys
 - line comments and bracket rules
-- starter snippets for `main`, `hello`, `const`, `if`, and `while`
+- starter snippets for `main`, `mainargs`, `hello`, `import`, `extern`, `const`, `struct`, `enum`, `match`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
 
 ## Quick Start
+
+Create a Monster project:
+
+```bash
+mst init hello-monster
+cd hello-monster
+mst run
+```
 
 ```mnst
 fn main() -> i32 {
@@ -42,7 +51,18 @@ fn main() -> i32 {
 }
 ```
 
-Open a `.mnst` file and VS Code will automatically switch to Monster language mode.
+```toml
+[package]
+name = "hello-monster"
+entry = "src/main.mnst"
+
+[build]
+profile = "release"
+opt-level = 2
+cpu = "generic"
+```
+
+Open a `.mnst` file or `Monster.toml` file and VS Code will automatically switch to the matching Monster language mode.
 
 ## Current Scope
 
@@ -51,7 +71,7 @@ Today this extension focuses on the basics:
 - syntax coloring
 - hover help
 - snippets
-- file association
+- file association for `.mnst` and `Monster.toml`
 - icon support
 
 Not included yet:

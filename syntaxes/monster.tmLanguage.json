@@ -15,6 +15,12 @@
       "include": "#enum-declarations"
     },
     {
+      "include": "#struct-declarations"
+    },
+    {
+      "include": "#const-declarations"
+    },
+    {
       "include": "#variable-declarations"
     },
     {
@@ -105,6 +111,38 @@
         }
       ]
     },
+    "struct-declarations": {
+      "patterns": [
+        {
+          "name": "meta.struct.definition.monster",
+          "match": "\\b(struct)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.monster"
+            },
+            "2": {
+              "name": "entity.name.type.struct.monster"
+            }
+          }
+        }
+      ]
+    },
+    "const-declarations": {
+      "patterns": [
+        {
+          "name": "meta.const.definition.monster",
+          "match": "\\b(const)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.monster"
+            },
+            "2": {
+              "name": "constant.other.monster"
+            }
+          }
+        }
+      ]
+    },
     "variable-declarations": {
       "patterns": [
         {
@@ -172,7 +210,7 @@
       "patterns": [
         {
           "name": "entity.name.function.call.monster",
-          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\b(?=\\s*\\()"
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*(?:\\.[A-Za-z_][A-Za-z0-9_]*)*)\\b(?=\\s*\\()"
         }
       ]
     },
@@ -180,7 +218,7 @@
       "patterns": [
         {
           "name": "keyword.operator.monster",
-          "match": "==|!=|<=|>=|&&|\\|\\||=>|->|[-+*/=<>!:]"
+          "match": "==|!=|<=|>=|&&|\\|\\||=>|->|[-+*/%=&<>!:.]"
         }
       ]
     }

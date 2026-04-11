@@ -1,8 +1,8 @@
 {
   "name": "monster-language",
   "displayName": "Monster Language",
-  "description": "Syntax highlighting, snippets, hover help, and file icon support for Monster (.mnst).",
-  "version": "0.1.9",
+  "description": "Syntax highlighting, snippets, hover help, and file icon support for Monster (.mnst) and Monster.toml.",
+  "version": "0.2.0",
   "publisher": "monster-lang",
   "license": "MIT",
   "icon": "icons/monster-marketplace.png",
@@ -23,7 +23,8 @@
   },
   "main": "./extension.js",
   "activationEvents": [
-    "onLanguage:monster"
+    "onLanguage:monster",
+    "onLanguage:monster-manifest"
   ],
   "categories": [
     "Programming Languages"
@@ -31,6 +32,8 @@
   "keywords": [
     "monster",
     "mnst",
+    "toml",
+    "manifest",
     "language",
     "vscode",
     "compiler",
@@ -58,6 +61,22 @@
           "light": "./icons/monster-light.svg",
           "dark": "./icons/monster-dark.svg"
         }
+      },
+      {
+        "id": "monster-manifest",
+        "aliases": [
+          "Monster Manifest",
+          "Monster.toml"
+        ],
+        "filenames": [
+          "Monster.toml",
+          "monster.toml"
+        ],
+        "configuration": "./manifest-language-configuration.json",
+        "icon": {
+          "light": "./icons/monster-light.svg",
+          "dark": "./icons/monster-dark.svg"
+        }
       }
     ],
     "grammars": [
@@ -65,12 +84,21 @@
         "language": "monster",
         "scopeName": "source.monster",
         "path": "./syntaxes/monster.tmLanguage.json"
+      },
+      {
+        "language": "monster-manifest",
+        "scopeName": "source.monster.manifest",
+        "path": "./syntaxes/monster-manifest.tmLanguage.json"
       }
     ],
     "snippets": [
       {
         "language": "monster",
         "path": "./snippets/monster.json"
+      },
+      {
+        "language": "monster-manifest",
+        "path": "./snippets/monster-manifest.json"
       }
     ]
   }

@@ -1,0 +1,113 @@
+{
+  "scopeName": "source.monster.manifest",
+  "name": "Monster Manifest",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#sections"
+    },
+    {
+      "include": "#keys"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#known-values"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#operators"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.monster-manifest",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "sections": {
+      "patterns": [
+        {
+          "name": "meta.section.monster-manifest",
+          "match": "^\\s*(\\[)(package|build)(\\])",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.section.begin.monster-manifest"
+            },
+            "2": {
+              "name": "entity.name.section.monster-manifest"
+            },
+            "3": {
+              "name": "punctuation.definition.section.end.monster-manifest"
+            }
+          }
+        }
+      ]
+    },
+    "keys": {
+      "patterns": [
+        {
+          "name": "support.type.property-name.monster-manifest",
+          "match": "^\\s*(name|entry|profile|mode|opt-level|opt_level|cpu)\\b(?=\\s*=)"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.monster-manifest",
+          "begin": "\"",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.begin.monster-manifest"
+            }
+          },
+          "end": "\"",
+          "endCaptures": {
+            "0": {
+              "name": "punctuation.definition.string.end.monster-manifest"
+            }
+          },
+          "patterns": [
+            {
+              "name": "constant.character.escape.monster-manifest",
+              "match": "\\\\[nrt\"\\\\]"
+            }
+          ]
+        }
+      ]
+    },
+    "known-values": {
+      "patterns": [
+        {
+          "name": "constant.language.monster-manifest",
+          "match": "\\b(release|debug|generic|native)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.integer.monster-manifest",
+          "match": "\\b\\d+\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.monster-manifest",
+          "match": "="
+        }
+      ]
+    }
+  }
+}
