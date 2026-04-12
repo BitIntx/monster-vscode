@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.3
+
+- added syntax highlighting, hover help, autocomplete, and snippets for `defer`
+- documented Monster function-scope cleanup snippets in the extension README
+
 ## 0.2.2
 
 - updated `let` autocomplete and snippets for local type inference

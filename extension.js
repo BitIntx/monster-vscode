@@ -87,6 +87,12 @@ const HOVER_ENTRIES = new Map(
       signature: "continue;",
       description: "Skips to the next iteration of the nearest `while` loop.",
     },
+    defer: {
+      kind: "keyword",
+      signature: "defer cleanup_call();",
+      description:
+        "Registers a function-body-scope cleanup expression. Deferred expressions must return `void` and run before the function returns in last-in, first-out order.",
+    },
     as: {
       kind: "keyword",
       signature: "expr as Type",
@@ -519,6 +525,12 @@ const MONSTER_COMPLETION_ENTRIES = [
     kind: vscode.CompletionItemKind.Keyword,
     insertText: "continue;",
     detail: "keyword: continue statement",
+  },
+  {
+    label: "defer",
+    kind: vscode.CompletionItemKind.Keyword,
+    insertText: "defer ${1:cleanup}(${2});",
+    detail: "keyword: function-scope cleanup",
   },
   ...["i32", "u8", "usize", "bool", "str", "void"].map((label) => ({
     label,

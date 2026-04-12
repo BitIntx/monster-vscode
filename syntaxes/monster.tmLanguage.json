@@ -174,7 +174,7 @@
       "patterns": [
         {
           "name": "keyword.control.monster",
-          "match": "\\b(import|extern|fn|struct|enum|const|let|mut|return|if|else|while|break|continue|match|as|sizeof)\\b"
+          "match": "\\b(import|extern|fn|struct|enum|const|let|mut|return|if|else|while|break|continue|defer|match|as|sizeof)\\b"
         }
       ]
     },

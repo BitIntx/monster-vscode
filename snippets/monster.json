@@ -85,6 +85,13 @@
     ],
     "description": "Monster explicitly typed mutable local binding"
   },
+  "defer": {
+    "prefix": "defer",
+    "body": [
+      "defer ${1:cleanup}(${2});"
+    ],
+    "description": "Monster function-scope cleanup statement"
+  },
   "struct": {
     "prefix": "struct",
     "body": [
