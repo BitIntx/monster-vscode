@@ -1,9 +1,13 @@
 # Changelog
 
+## 0.2.4
+
+- updated `defer` hover help and snippets for block-scoped cleanup semantics
+
 ## 0.2.3
 
 - added syntax highlighting, hover help, autocomplete, and snippets for `defer`
-- documented Monster function-scope cleanup snippets in the extension README
+- documented Monster cleanup snippets in the extension README
 
 ## 0.2.2
 

@@ -91,7 +91,7 @@ const HOVER_ENTRIES = new Map(
       kind: "keyword",
       signature: "defer cleanup_call();",
       description:
-        "Registers a function-body-scope cleanup expression. Deferred expressions must return `void` and run before the function returns in last-in, first-out order.",
+        "Registers a scope cleanup expression. Deferred expressions must return `void` and run in last-in, first-out order when the block exits, including return, break, and continue paths.",
     },
     as: {
       kind: "keyword",

@@ -90,7 +90,7 @@
     "body": [
       "defer ${1:cleanup}(${2});"
     ],
-    "description": "Monster function-scope cleanup statement"
+    "description": "Monster scope cleanup statement"
   },
   "struct": {
     "prefix": "struct",
