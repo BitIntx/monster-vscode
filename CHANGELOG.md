@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.5
+
+- added command palette actions for checking, running, building, and cleaning Monster files
+- added save-time `mst check` diagnostics in the Problems panel
+- added std import/function autocomplete and hover help for `std/assert.mnst`, `std/fs.mnst`, `std/mem.mnst`, `std/str.mnst`, and `std/vec_i32.mnst`
+
 ## 0.2.4
 
 - updated `defer` hover help and snippets for block-scoped cleanup semantics

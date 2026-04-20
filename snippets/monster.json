@@ -43,6 +43,41 @@
     ],
     "description": "Monster source import with module alias"
   },
+  "import std assert": {
+    "prefix": "stdassert",
+    "body": [
+      "import \"std/assert.mnst\";"
+    ],
+    "description": "Import Monster std assertion helpers"
+  },
+  "import std fs": {
+    "prefix": "stdfs",
+    "body": [
+      "import \"std/fs.mnst\";"
+    ],
+    "description": "Import Monster std file helpers"
+  },
+  "import std mem": {
+    "prefix": "stdmem",
+    "body": [
+      "import \"std/mem.mnst\";"
+    ],
+    "description": "Import Monster std memory helpers"
+  },
+  "import std str": {
+    "prefix": "stdstr",
+    "body": [
+      "import \"std/str.mnst\";"
+    ],
+    "description": "Import Monster std string helpers"
+  },
+  "import std vec i32": {
+    "prefix": "stdvec",
+    "body": [
+      "import \"std/vec_i32.mnst\";"
+    ],
+    "description": "Import Monster std VecI32 helpers"
+  },
   "extern function": {
     "prefix": "extern",
     "body": [

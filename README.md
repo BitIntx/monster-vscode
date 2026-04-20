@@ -30,7 +30,9 @@ code --install-extension monster-lang.monster-language
 - syntax highlighting for current Monster syntax, including `const`, `defer`, `struct`, `enum`, payload enums, `match`, `sizeof`, pointers, slices, imports, and `print_ln_*`
 - syntax highlighting for `Monster.toml` project manifest sections and build options
 - hover help for Monster keywords, primitive types, builtins, and manifest keys
-- autocomplete suggestions for Monster keywords, builtins, primitive types, and `Monster.toml` keys
+- autocomplete suggestions for Monster keywords, builtins, primitive types, std imports/helpers, and `Monster.toml` keys
+- command palette actions for checking, running, building, and cleaning Monster files
+- save-time diagnostics from `mst check` in the Problems panel
 - line comments and bracket rules
 - starter snippets for `main`, `mainargs`, `hello`, `import`, `extern`, `const`, `let`, `letmut`, `lettyped`, `defer`, `struct`, `enum`, `match`, `if`, and `while`
 - Monster file icon support for themes that do not define one already
@@ -72,6 +74,8 @@ Today this extension focuses on the basics:
 - syntax coloring
 - hover help
 - autocomplete
+- `mst check` diagnostics
+- command palette actions
 - snippets
 - file association for `.mnst` and `Monster.toml`
 - icon support
@@ -79,9 +83,19 @@ Today this extension focuses on the basics:
 Not included yet:
 
 - language server features
-- diagnostics from the compiler
 - formatting
 - go-to-definition or semantic tokens
+
+## Commands
+
+The extension can call the `mst` compiler from VS Code:
+
+- `Monster: Check Current File`
+- `Monster: Run Current File`
+- `Monster: Build Current File`
+- `Monster: Clean Artifacts`
+
+By default, `.mnst` files are checked on save and diagnostics are shown in the Problems panel. If your compiler is not on `PATH`, set `monster.compilerPath` in VS Code settings.
 
 ## Local Development
 

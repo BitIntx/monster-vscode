@@ -2,7 +2,7 @@
   "name": "monster-language",
   "displayName": "Monster Language",
   "description": "Syntax highlighting, snippets, hover help, and file icon support for Monster (.mnst) and Monster.toml.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "publisher": "monster-lang",
   "license": "MIT",
   "icon": "icons/monster-marketplace.png",
@@ -24,7 +24,11 @@
   "main": "./extension.js",
   "activationEvents": [
     "onLanguage:monster",
-    "onLanguage:monster-manifest"
+    "onLanguage:monster-manifest",
+    "onCommand:monster.checkCurrentFile",
+    "onCommand:monster.runCurrentFile",
+    "onCommand:monster.buildCurrentFile",
+    "onCommand:monster.cleanArtifacts"
   ],
   "categories": [
     "Programming Languages"
@@ -100,6 +104,43 @@
         "language": "monster-manifest",
         "path": "./snippets/monster-manifest.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "monster.checkCurrentFile",
+        "title": "Monster: Check Current File",
+        "category": "Monster"
+      },
+      {
+        "command": "monster.runCurrentFile",
+        "title": "Monster: Run Current File",
+        "category": "Monster"
+      },
+      {
+        "command": "monster.buildCurrentFile",
+        "title": "Monster: Build Current File",
+        "category": "Monster"
+      },
+      {
+        "command": "monster.cleanArtifacts",
+        "title": "Monster: Clean Artifacts",
+        "category": "Monster"
+      }
+    ],
+    "configuration": {
+      "title": "Monster",
+      "properties": {
+        "monster.compilerPath": {
+          "type": "string",
+          "default": "mst",
+          "description": "Path to the Monster compiler executable used for editor commands and diagnostics."
+        },
+        "monster.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run `mst check` and update Problems diagnostics whenever a Monster source file is saved."
+        }
+      }
+    }
   }
 }
